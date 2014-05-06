@@ -155,4 +155,8 @@ my $twig = XML::Twig->new(
     },
 );
 
-$twig->parse($fhin);
+eval {
+    $twig->parse($fhin);
+} or do {
+    unlink 'pokrewne.csv';
+};
